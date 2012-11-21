@@ -1,4 +1,4 @@
-\documentclass[ignorenonframetext, professionalfonts, hyperref={pdftex, unicode}]{beamer}
+\documentclass[ignorenonframetext, professionalfonts, hyperref={unicode}]{beamer}
 
 \usetheme{Copenhagen}
 \usecolortheme{wolverine}
@@ -190,9 +190,9 @@ man -a printf
 \end{frame}
 \begin{frame}{Навигация по файловой системе}
       \begin{itemize}
-        \item Список файлов в (текущей по умолчанию) директории  \textbf{ls} (man ls)
-        \item Смена текущей директории \textbf{cd} (help cd)
-        \item Имя текущей директории  \textbf{pwd} (help pwd)
+        \item {\tt ls} -- список файлов в (текущей по умолчанию) директории (man ls)
+        \item {\tt cd} -- смена текущей директории (help cd)
+        \item {\tt pwd} -- имя текущей директории (help pwd)
       \end{itemize}
 \end{frame}
 
@@ -214,17 +214,18 @@ man -a printf
 			\item file
 		\column{0.4\textwidth}
 			\begin{block}{Упражнение}
-				Создать иерархию директорий
+        \begin{enumerate}
+				  \item Создать иерархию директорий
 
-\begin{lstlisting}
-dir1/dir1.1/dir1.1.1
-dir1/dir1.2/dir1.2.1
-dir1/dir1.2/dir1.2.2
-\end{lstlisting}
-
-				Внутри каждой создать файл
-
-				Удалить все созданное
+            \begin{lstlisting}
+              dir1/dir1.1/dir1.1.1
+              dir1/dir1.2/dir1.2.1
+              dir1/dir1.2/dir1.2.2
+            \end{lstlisting}
+				
+          \item Внутри каждой создать файл
+				  \item Удалить все созданное
+        \end{enumerate}
 			\end{block}
 		\end{columns}
 	\end{itemize}
@@ -243,7 +244,7 @@ dir1/dir1.2/dir1.2.2
     \item Wildcards
       \begin{itemize}
         \item {\tt *} Любой набор символов {\tt file*txt : file1.txt filefilefiletxt}
-        \item {\tt $[$<список>$]$ } символ из заданного набора {\tt }
+        \item {\tt $[$<список>$]$ } символ из заданного набора
         \item {\tt ?} любой один символ
       \end{itemize}
 
@@ -429,10 +430,12 @@ ls -s *.jpg | awk 'BEGIN{s=0};/^[ ]*[0-9]/{s+=\$1};END{print s}'
     \begin{itemize}
       \item С созданием нового файла
 
-        {\tt command > file} Например {\tt cat file1 file2 > file3}
+        {\tt command > file}
+
+        Например {\tt cat file1 file2 > file3}
       \item С дополнением существующего
 
-        {\tt command > >file}
+        {\tt command >\phantom{}> file}
     \end{itemize}
     \pause
   \item Перенаправления stdin
@@ -453,7 +456,7 @@ ls -s *.jpg | awk 'BEGIN{s=0};/^[ ]*[0-9]/{s+=\$1};END{print s}'
 \begin{frame}[fragile]{Мультистрочный ввод}
 
 \begin{verbatim}
-programm <<LABEL
+program <<LABEL
 Тут
     много
 	     строк
