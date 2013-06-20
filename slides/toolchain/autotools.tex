@@ -29,88 +29,88 @@
    \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Упрощенная схема работы GNU configure}
+% \begin{frame}
+% \frametitle{Упрощенная схема работы GNU configure}
 
-%This slide is copyright Alexandre Duret-Lutz, Laboratoire de Recherche et Développement de l'Epita 
-%Distributed under CC BY-SA 2.0 license
-%Minor changes Yury Adamov, EPAM 
-\begin{center}
-\begin{tikzpicture}
+% %This slide is copyright Alexandre Duret-Lutz, Laboratoire de Recherche et Développement de l'Epita 
+% %Distributed under CC BY-SA 2.0 license
+% %Minor changes Yury Adamov, EPAM 
+% \begin{center}
+% \begin{tikzpicture}
 
-\dgfile (Makefilein) at (1,5) {\filenamew{Makefile.in}};
-\dgfile (src/Makefilein) at (4,5) {\filenamew{src/Makefile.in}};
-\dgfile (confighin) at (7,5) {\filenamew{config.h.in}};
-\dgfile (configure) at (4,3) {\filenamew{configure}};
-\uncover<2->{
-\bfile (Makefile) at (1,1) {\filenamew{Makefile}};
-\bfile (src/Makefile) at (4,1) {\filenamew{src/Makefile}};
-\bfile (configh) at (7,1) {\filenamew{config.h}};
+% \dgfile (Makefilein) at (1,5) {\filenamew{Makefile.in}};
+% \dgfile (src/Makefilein) at (4,5) {\filenamew{src/Makefile.in}};
+% \dgfile (confighin) at (7,5) {\filenamew{config.h.in}};
+% \dgfile (configure) at (4,3) {\filenamew{configure}};
+% \uncover<2->{
+% \bfile (Makefile) at (1,1) {\filenamew{Makefile}};
+% \bfile (src/Makefile) at (4,1) {\filenamew{src/Makefile}};
+% \bfile (configh) at (7,1) {\filenamew{config.h}};
 
-\arr (Makefilein) .. controls +(-90:1cm) and +(180:3cm) .. (configure);
-\arr (src/Makefilein) .. controls +(-90:1cm) and +(175:3cm) .. (configure);
-\arr (confighin) .. controls +(-90:1cm) and +(170:3cm) .. (configure);
+% \arr (Makefilein) .. controls +(-90:1cm) and +(180:3cm) .. (configure);
+% \arr (src/Makefilein) .. controls +(-90:1cm) and +(175:3cm) .. (configure);
+% \arr (confighin) .. controls +(-90:1cm) and +(170:3cm) .. (configure);
 
-\arr (configure) .. controls +(-10:2.5cm) and +(80:1cm) .. (Makefile);
-\arr (configure) .. controls +(-5:2.2cm) and +(85:1cm) .. (src/Makefile);
-\arr (configure) .. controls +(0:2cm) and +(90:1cm) .. (configh);
-}
-\end{tikzpicture}
-\end{center}
-\footnotesize{ Взято из http://www.lrde.epita.fr/~adl/autotools.html}
-\end{frame}
+% \arr (configure) .. controls +(-10:2.5cm) and +(80:1cm) .. (Makefile);
+% \arr (configure) .. controls +(-5:2.2cm) and +(85:1cm) .. (src/Makefile);
+% \arr (configure) .. controls +(0:2cm) and +(90:1cm) .. (configh);
+% }
+% \end{tikzpicture}
+% \end{center}
+% \footnotesize{ Взято из http://www.lrde.epita.fr/~adl/autotools.html}
+% \end{frame}
 
-\begin{frame}
-\frametitle{Реальная схема работы configure}
+% \begin{frame}
+% \frametitle{Реальная схема работы configure}
 
 
-\begin{center}
-\begin{tikzpicture}
+% \begin{center}
+% \begin{tikzpicture}
 
-%This slide is copyright Alexandre Duret-Lutz, Laboratoire de Recherche et Développement de l'Epita 
-%Distributed under CC BY-SA 2.0 license
-%Minor changes Yury Adamov, EPAM 
-\dgfile (Makefilein) at (1,5) {\filenamew{Makefile.in}};
-\dgfile (src/Makefilein) at (4,5) {\filenamew{src/Makefile.in}};
-\dgfile (confighin) at (7,5) {\filenamew{config.h.in}};
-\dgfile (configure) at (-.7,4) {\filenamew{configure}};
-\uncover<all:2->{\bfile (configlog) at (5.5,2) {\filenamew{config.log}};}
-\uncover<all:3->{\bfile (configstatus) at (2.5,3) {\filenamew{config.status}};}
+% %This slide is copyright Alexandre Duret-Lutz, Laboratoire de Recherche et Développement de l'Epita 
+% %Distributed under CC BY-SA 2.0 license
+% %Minor changes Yury Adamov, EPAM 
+% \dgfile (Makefilein) at (1,5) {\filenamew{Makefile.in}};
+% \dgfile (src/Makefilein) at (4,5) {\filenamew{src/Makefile.in}};
+% \dgfile (confighin) at (7,5) {\filenamew{config.h.in}};
+% \dgfile (configure) at (-.7,4) {\filenamew{configure}};
+% \uncover<all:2->{\bfile (configlog) at (5.5,2) {\filenamew{config.log}};}
+% \uncover<all:3->{\bfile (configstatus) at (2.5,3) {\filenamew{config.status}};}
 
-\uncover<all:4->{\bfile (Makefile) at (1,1) {\filenamew{Makefile}};
-\bfile (src/Makefile) at (4,1) {\filenamew{src/Makefile}};
-\bfile (configh) at (7,1) {\filenamew{config.h}};}
-\uncover<all:5->{\bfile (configcache) at (0,2) {\filenamew{config.cache}};}
+% \uncover<all:4->{\bfile (Makefile) at (1,1) {\filenamew{Makefile}};
+% \bfile (src/Makefile) at (4,1) {\filenamew{src/Makefile}};
+% \bfile (configh) at (7,1) {\filenamew{config.h}};}
+% \uncover<all:5->{\bfile (configcache) at (0,2) {\filenamew{config.cache}};}
 
-\uncover<all:2>{\arr[color=red] (configure) .. controls +(10:2cm) and +(80:2cm) .. (configlog);}
-\uncover<all:3->{\arr (configure) .. controls +(10:2cm) and +(80:2cm) .. (configlog);}
-\uncover<all:3>{\arr[color=red] (configure) .. controls +(0:1cm) and +(90:1cm) .. (configstatus);}
-\uncover<all:4->{\arr (configure) .. controls +(0:1cm) and +(90:1cm) .. (configstatus);}
-\uncover<all:5>{\arr[color=red] (configure) .. controls +(-10:1.5cm) and +(80:1cm) .. (configcache);
-              \arr[color=red] (configcache) .. controls +(-140:2cm) and +(-170:2cm) .. (configure);}
-\uncover<all:4>{\arr[color=red] (Makefilein) .. controls +(-90:1cm) and +(180:2.8cm) .. (configstatus);
-\arr[color=red] (src/Makefilein) .. controls +(-90:1cm) and +(170:3cm) .. (configstatus);
-\arr[color=red] (confighin) .. controls +(-90:1cm) and +(170:3cm) .. (configstatus);
+% \uncover<all:2>{\arr[color=red] (configure) .. controls +(10:2cm) and +(80:2cm) .. (configlog);}
+% \uncover<all:3->{\arr (configure) .. controls +(10:2cm) and +(80:2cm) .. (configlog);}
+% \uncover<all:3>{\arr[color=red] (configure) .. controls +(0:1cm) and +(90:1cm) .. (configstatus);}
+% \uncover<all:4->{\arr (configure) .. controls +(0:1cm) and +(90:1cm) .. (configstatus);}
+% \uncover<all:5>{\arr[color=red] (configure) .. controls +(-10:1.5cm) and +(80:1cm) .. (configcache);
+%               \arr[color=red] (configcache) .. controls +(-140:2cm) and +(-170:2cm) .. (configure);}
+% \uncover<all:4>{\arr[color=red] (Makefilein) .. controls +(-90:1cm) and +(180:2.8cm) .. (configstatus);
+% \arr[color=red] (src/Makefilein) .. controls +(-90:1cm) and +(170:3cm) .. (configstatus);
+% \arr[color=red] (confighin) .. controls +(-90:1cm) and +(170:3cm) .. (configstatus);
 
-\arr[color=red] (configstatus) .. controls +(-10:3cm) and +(70:1cm) .. (Makefile);
-\arr[color=red] (configstatus) .. controls +(-5:2.5cm) and +(90:2cm) .. (src/Makefile);
-\arr[color=red] (configstatus) .. controls +(5:2cm) and +(90:2cm) .. (configh);
-\arr[color=red] (configstatus) .. controls +(0:2cm) and +(100:.5cm) .. (configlog);
-}
-\uncover<all:5->{\arr (Makefilein) .. controls +(-90:1cm) and +(180:2.8cm) .. (configstatus);
-\arr (src/Makefilein) .. controls +(-90:1cm) and +(170:3cm) .. (configstatus);
-\arr (confighin) .. controls +(-90:1cm) and +(170:3cm) .. (configstatus);
+% \arr[color=red] (configstatus) .. controls +(-10:3cm) and +(70:1cm) .. (Makefile);
+% \arr[color=red] (configstatus) .. controls +(-5:2.5cm) and +(90:2cm) .. (src/Makefile);
+% \arr[color=red] (configstatus) .. controls +(5:2cm) and +(90:2cm) .. (configh);
+% \arr[color=red] (configstatus) .. controls +(0:2cm) and +(100:.5cm) .. (configlog);
+% }
+% \uncover<all:5->{\arr (Makefilein) .. controls +(-90:1cm) and +(180:2.8cm) .. (configstatus);
+% \arr (src/Makefilein) .. controls +(-90:1cm) and +(170:3cm) .. (configstatus);
+% \arr (confighin) .. controls +(-90:1cm) and +(170:3cm) .. (configstatus);
 
-\arr (configstatus) .. controls +(-10:3cm) and +(70:1cm) .. (Makefile);
-\arr (configstatus) .. controls +(-5:2.5cm) and +(90:2cm) .. (src/Makefile);
-\arr (configstatus) .. controls +(5:2cm) and +(90:2cm) .. (configh);
-\arr (configstatus) .. controls +(0:2cm) and +(100:.5cm) .. (configlog);
-}
-\end{tikzpicture}
-\footnotesize{ Взято из http://www.lrde.epita.fr/~adl/autotools.html}
-\end{center}
+% \arr (configstatus) .. controls +(-10:3cm) and +(70:1cm) .. (Makefile);
+% \arr (configstatus) .. controls +(-5:2.5cm) and +(90:2cm) .. (src/Makefile);
+% \arr (configstatus) .. controls +(5:2cm) and +(90:2cm) .. (configh);
+% \arr (configstatus) .. controls +(0:2cm) and +(100:.5cm) .. (configlog);
+% }
+% \end{tikzpicture}
+% \footnotesize{ Взято из http://www.lrde.epita.fr/~adl/autotools.html}
+% \end{center}
 
-\end{frame}
+% \end{frame}
 
 
 
