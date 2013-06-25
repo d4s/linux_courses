@@ -19,8 +19,19 @@ TARGET += 18-profile.pdf
 TARGET += 19-packaging.pdf
 TARGET += 20-version_control.pdf
 
-TARGET += epam-Linux_courses_handbook.pdf
+TARGET_PPTX=$(TARGET:.pdf=.pptx)
 
+TARGET += epam-Linux_courses_handbook.pdf
+TARGET_XML=$(TARGET:.pdf=.xml)
+
+LATEXML=latexml
+LATEXML_PARAMS=--inputencoding=utf8 --preload=beamer.cls --preload=t2aenc.def --nocomments
+XMLWF=xmlwf
+XMLWF_PARAMS=
+
+LATEXML2OPENXML=java -jar latexml2openxml-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+
+.PHONY: all xml pptx tex clean
 
 %.dvi: %.tex
 	latex $<
@@ -31,10 +42,25 @@ TARGET += epam-Linux_courses_handbook.pdf
 	dvips -j0 -Ppdf -o $@ $<
 
 %.pdf: %.tex
-	pdflatex $<
+	pdflatex -interaction=nonstopmode $<
 
+%.xml: %.tex
+	$(LATEXML) $(LATEXML_PARAMS) --destination=$@ $< &> $@.log
+	$(XMLWF) $(XMLWF_PARAMS) $@
 
-all:  $(TARGET)
+%.pptx: %.xml
+	$(LATEXML2OPENXML) --slideshow=$@ $< &> $@.log
+
+tex: $(TARGET)
+
+xml: $(TARGET_XML)
+
+pptx: $(TARGET_PPTX)
+
+bib: programm.aux
+	bibtex8 -s programm.aux
+
+all: tex pptx
 
 clean: 
 	@rm -f *.aux
@@ -44,7 +70,6 @@ clean:
 	@rm -f *.out
 	@rm -f *.toc
 	@rm -f *.nav
+	@rm -f $(TARGET_PPTX)
+	@rm -f $(TARGET_XML)
 	@rm -f $(TARGET)
-
-bib: programm.aux
-	bibtex8 -s programm.aux
