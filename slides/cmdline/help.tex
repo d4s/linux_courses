@@ -1,15 +1,41 @@
-\begin{frame}[fragile]{Получение помощи}
+
+\begin{frame}[fragile]{Как правильно задавать вопросы}
+From FAQ How To Ask Questions The Smart Way
+Before You Ask
+  \begin{itemize}
+	  \item Try to find an answer by reading the manual.
+	  \item Try to find an answer by reading a FAQ.
+	  \item Try to find an answer by searching the archives of the forum you plan to post to.
+	  \item Try to find an answer by searching the Web.
+	  \item Try to find an answer by inspection or experimentation.
+	  \item Try to find an answer by asking a skilled friend.
+	  \item If you're a programmer, try to find an answer by reading the source code.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Источники получение помощи}
   \begin{itemize}
     \pause
     \item \textbf{man} - помощь по внешним командам
     \pause
-    \item \textbf{help} - помощь по внутренним командам bash (также man bash)
+    \item \textbf{help} - встроенная помощь по внутренним командам bash (также man bash)
     \pause
     \item \textbf{info} - расширенная помощь по некоторым командам (texinfo format)
-      \begin{itemize}
-       \item   Попробовать {\tt info coreutils}
-       \item   Справка по навигации -- нажать h
-      \end{itemize}
+     \begin{block}{Упражнение. Работа с командой info}
+        \begin{itemize}
+        \item   Попробовать {\tt info coreutils}
+        \item   Справка по навигации -- нажать h
+        \end{itemize}
+	 \end{block}
+		\begin{block}{Упражнение. Другие источники помощи.}
+			\begin{lstlisting}
+            help 
+            help help
+            man -h
+            info --help
+			\end{lstlisting}
+		\end{block}
   \end{itemize}
 \end{frame}
 
@@ -40,9 +66,18 @@ man -k printf
 man 3 printf
 man 1 printf
 man -a printf
+man -wa printf
 			\end{lstlisting}
 		\end{block}
 	\end{columns}
 \end{frame}
 
 
+%\begin{frame}[fragile]{Чему научились}
+%  \begin{itemize}
+%  \item Как спрашивать у сообщества
+%  \item Умеем использовать 3 источника получения информации man, info, help
+%  \item Как перемещаться по страницам помощи info и man
+%  \item Иcкать в системе помощи man и запрашивать из одного из 8-ми разделов 
+%  \end{itemize}
+%\end{frame}
