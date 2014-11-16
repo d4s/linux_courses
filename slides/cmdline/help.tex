@@ -41,10 +41,11 @@ Before You Ask
 
 \begin{frame}[fragile]{Основное о man}
 \begin{columns}
-	\column{2.2in}
+	\column{2.5in}
 		\begin{itemize}
 			\item Прочитайте {\tt man man} !
-			\item Apropos {\tt man -k <слово>}
+			\item apropos, аналог {\tt man -k <слово>}
+            \item whatis, аналог {\tt man -f <слово>} 
 			\item Разделы (sections)
 				\begin{itemize}
 					\item[1] Основная секция(юзерские программы)
@@ -62,11 +63,11 @@ Before You Ask
 	\column{1in}
 		\begin{block}{Попробовать}
 			\begin{lstlisting}
-man -k printf
-man 3 printf
-man 1 printf
-man -a printf
-man -wa printf
+man -k intro or apropos
+man -f intro or whatis
+man 3 intro
+man 1 intro
+man -wa intro
 			\end{lstlisting}
 		\end{block}
 	\end{columns}
